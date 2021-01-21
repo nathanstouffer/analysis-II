@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+
+\usepackage{../analysis}
+
+\begin{document}
+
+\coverpage{1}
+
+% hw problem 1 -----------------------------------------------------------------
+
+\begin{exercise}{6.1.5}{3}
+    \problem{
+        Derive the integration of the derivative theorem from the differentiation of the integral theorem.
+    }
+    \proof{
+        So we must show that $\ddx \int_a^x g(t) dt = g(x)$ for all continuous functions $g$ on $[a,b]$ with $a \leq b$ implies that $\int_a^b f'(x) dx = f(b) - f(a)$ for all $f \in C^1$ on $[a,b]$.
+        Take $F(x) \in C^1[a,b]$, then $F$ has a continuous derivative $F' = f$ defined on $[a,b]$.
+        By the differentiation of the integral theorem, we have $\ddx \int_a^x f(t) dt = f(x)$.
+        Then $f(x) = F'(x) = \ddx F(x)$ so we must have $F(x) = \int_a^x F'(t) dt$ an arbitrary $C^1$ function on $[a,b]$. \parspace
+        Then we can compute the value of $F(b) - F(a) = \int_a^b F'(x) dx - \int_a^a F'(x) dx = \int_a^b F'(x) dx + 0$.
+        So we have shown that $F(b) - F(a) = \int_a^b F'(x) dx$ holds for any $C^1$ function defined on $[a,b]$, which is the integration of the derivative theorem.
+    }
+\end{exercise}
+
+% hw problem 2 -----------------------------------------------------------------
+
+\begin{exercise}{6.1.5}{4}
+    \problem{
+        Prove the integral mean value theorem: if $f$ is continuous on $[a,b]$ then there exists $y$ in $(a,b)$ such that $\int_a^b f(x) dx = (b-a)f(y)$.
+    }
+    \proof{
+        Suppose we have some continuous function $f$ defined on $[a,b]$.
+        Then let $F(x) = \int_a^x f(t) dt$, we know $F(x) \in C^1[a,b]$ and $F' = f$ by the differentiation of the integral theorem.
+        Since $F(x)$ is differentiable on $[a,b]$, the mean value theorem tells us there exists $y \in (a,b)$ such that
+        $$F'(y) = f(y) = \frac{F(b) - F(a)}{b-a} = \frac{\int_a^b f(x)dx - \int_a^a f(x)dx}{b-a} = \frac{\int_a^b f(x)dx - 0}{b-a} = \frac{\int_a^b f(x)dx}{b-a}$$
+        So we have $f(y) = \frac{\int_a^b f(x)dx}{b-a}$ and we can multiply both sides by $b-a$ to obtain $\int_a^b f(x)dx = (b-a)f(y)$ for some $y \in (a,b)$ as desired.
+    }
+\end{exercise}
+
+% hw problem 3 -----------------------------------------------------------------
+
+\begin{exercise}{6.1.5}{8}
+    \problem{
+        Let $f$ be a $C^1$ function on the line, and let $g(x) = \int_0^1 f(xy)y^2 dy$.
+        Prove that $g$ is a $C^1$ function and establish a formula for $g'(x)$ in terms of $f$.
+    }
+    \proof{
+    }
+\end{exercise}
+
+% hw problem 4 -----------------------------------------------------------------
+
+\begin{exercise}{6.1.5}{10}
+    \problem{
+        For a continuous, positive function $w(x)$ on $[a,b]$, define the weighted average operator $A_w$ to be
+        $$ A_w(f) = \int_a^b f(x)w(x) dx / \int_a^b w(x) dx $$
+        for continous functions $f$.
+        Prove that $A_w$ is linear and lies between the maximum and minimum values of $f$.
+    }
+    \proof{
+        First we prove that $A_w$ is linear.
+        $A_w$ is linear if $A_w(c_1f + c_2 g) = c_1 A_w(f) + c_2 A_w(g)$ for $c_1, c_2 \in \R$ and continuous functions $f,g$ on $[a,b]$.
+        Towards proving linearity, let $f,g$ be continuous functions on $[a,b]$ and $c_1, c_2 \in \R$.
+        Then, using properties of integrals and functions,
+        \begin{align*}
+            A_w(c_1 f + c_2 g) &= \dfrac{\int_a^b [c_1 f + c_2 g](x)w(x)}{\int_a^b w(x) dx} \\
+                               &= \dfrac{\int_a^b c_1 f(x) w(x) + c_2 g(x) w(x) dx}{\int_a^b w(x) dx} \\
+                               &= \dfrac{\int_a^b c_1 f(x) w(x) dx + \int_a^b c_2 g(x) w(x) dx}{\int_a^b w(x) dx} \\
+                               &= \dfrac{c_1 \int_a^b f(x) w(x) dx + c_2 \int_a^b g(x) w(x) dx}{\int_a^b w(x) dx} \\
+                               &= \dfrac{c_1 \int_a^b f(x) w(x) dx}{\int_a^b w(x) dx} + \dfrac{c_2 \int_a^b g(x) w(x) dx}{\int_a^b w(x) dx} \\
+                               &= c_1 A_w(f) + c_2 A_w(g)
+        \end{align*}
+        So $A_w$ is linear.
+        Now we must show that $A_w(f)$ lies in between the maximum and minimum values of $f$.
+        Let $F^+ = \sup _{x \in [a,b]} f(x)$ and $F^- = \inf _{x \in [a,b]} f(x)$, so we must show that $A_w(f) \in [F^-, F^+]$ which is equivalent to $F^- \leq A_w(f) \leq F^+$.
+        Since $\int_a^b w(x) dx$ is a postive number, let $W = \int_a^b w(x) dx$.
+        If multiply the desired inequality by $W$, we must equivalently show that $WF^- \leq \int_a^b f(x) w(x) dx \leq WF^+$. \parspace
+        Now it is certainly true that $\int_a^b f(x) w(x) dx \leq \int_a^b F^+ w(x) dx$, but then $F^+$ is a constant so $ \int_a^b F^+ w(x) dx = F^+ \int_a^b w(x) dx = F^+ W $ so $ \int_a^b f(x) w(x) dx \leq WF^+$.
+        Similarly, $\int_a^b f(x) w(x) dx \geq \int _a^b F^- w(x) dx = F^- \int_a^b w(x) dx = F^-W$.
+        Then we have $WF^- \leq \int_a^b f(x) w(x) dx \leq WF^+$, which was the goal.
+    }
+\end{exercise}
+
+\end{document}
