@@ -45,6 +45,11 @@
         Prove that $g$ is a $C^1$ function and establish a formula for $g'(x)$ in terms of $f$.
     }
     \proof{
+        First define $h(x,y) = f(xy) y^2$ then $g(x) = \int_0^1 h(x,y) dy$.
+        Since $f(xy)$ and $y^2$ are continous functions, Theorem 6.1.8 tells us that $\int_0^1 h(x,y) dy$ is a continous function.
+        Further, the $g(x)$ must be $C^1$ for its derivative is continous.
+        Then the conditions for Theorem 6.1.7 are met (since the constant functions 0 and 1 are certainly $C^1$) so we can give the derivative formula:
+        $$ g'(x) = \int_0^1 \frac{\partial h}{\partial x}(x,y) dy = \int_0^1 f'(xy) y^3 dy $$
     }
 \end{exercise}
 
