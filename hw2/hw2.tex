@@ -16,7 +16,7 @@
         We must show that $g$ is Riemann integrable.
         The function $g$ is Riemann integrable if there exists sequence of partitions $P_j$ and a real number $\int _b^a g(x) dx$ for which $S(g, P_j) \to \int _b^a g(x) dx$ as $j \to \infty$ for every choice of Cauchy Sums $S(g, P_j)$.
         We already know that this condition holds for the function $f$.
-        We will just show that the difference between any Cauchy Sum $S(f, P_j)$ and $S(g, P_j)$ becomes arbitrarily small as $j \to \infty$. 
+        We will just show that the difference between any Cauchy Sum $S(f, P_j)$ and $S(g, P_j)$ becomes arbitrarily small as $j \to \infty$.
         Then the same conditions will hold for $g$. \parspace
         Given a partition $P_j$, let $|P_j|$ denote the maximum interval length in $P_j$.
         Now, since the number of difference between $f$ and $g$ is finite, label the values $x_1, x_2, ..., x_n$ such that $g(x_i) \neq f(x_i)$.
@@ -35,8 +35,8 @@
     }
     \proof{
         The function $F(x)$ is Lipschitz if there exists a natural number $M$ such that $| F(x) - F(x_0) | \leq M |x - x_0 |$ for all $x, x_0 \in [a,b]$.
-        Plugging in $x$, we must have $| \int _a^x f(t) dt - \int _a^{x_0} | \leq M | x - x_0 |$ for all $x, x_0 \in [a,b]$. 
-        Choose $M = \sup_{y \in [a,b]} f(y)$. \parspace 
+        Plugging in $x$, we must have $| \int _a^x f(t) dt - \int _a^{x_0} | \leq M | x - x_0 |$ for all $x, x_0 \in [a,b]$.
+        Choose $M = \sup_{y \in [a,b]} f(y)$. \parspace
         Now we will show that $\int _a^x f(t) dt - \int _a^{x_0} f(t) dt = \int _{x_0}^x f(t) dt$.
         We consider three cases.
         Case $x = x_0:$ then $\int _a^x f(t) dt - \int _a^{x_0} f(t) dt = 0 = \int _{x_0}^x f(t) dt$.
@@ -58,7 +58,20 @@
         Show that if $f$ has a jump discontinuity at $x_0$, then $F$ is not differentiable at $x_0$.
     }
     \proof{
-        
+        To prove that $F(x)$ is differentiable at $x_0$, we must show that $\lim _{x \to x_0} \frac{F(x) - F(x_0)}{x - x_0}$ exists.
+        Note that $\lim _{x \to x_0} \frac{F(x) - F(x_0)}{x - x_0} = \lim _{x \to x_0} \frac{\int _a^x f(t) dt - \int _a^{x_0} f(t) dt}{x - x_0} = \lim _{x \to x_0} \frac{\int _{x_0}^x f(t) dt}{x - x_0}$ by the quick proof in the previous problem.
+        For the limit to exist, we must have the existence of both the right and left limit and the equality $\lim _{x \to x_0^-} \frac{\int _{x_0}^x f(t) dt}{x - x_0} = \lim _{x \to x_0^+} \frac{\int _{x_0}^x f(t) dt}{x - x_0}$. \parspace
+        Let $\Delta x = |x - x_0|$, $m = \inf _{y \in [x_0 - \Delta x, x_0]} f(y)$, and $M = \sup _{y \in [x_0, x_0 + \Delta x]} f(y)$.
+        Certainly we have $ \lim _{x \to x_0^-} m (x - x_0) \leq \lim _{x \to x_0^-} \int _{x_0}^x f(t) dt$ for $x > x_0$.
+        Then, dividing by $x - x_0$ we get $ \lim _{x \to x_0^-} m = m \leq \lim _{x \to x_0^-} \frac{\int _{x_0}^x f(t) dt}{x - x_0}$.
+        Then for $x_0 > x$, we must have $\lim _{x \to x_0^+} \int _{x}^{x_0} f(t) dt \leq \lim _{x \to x_0^+} M (x_0 - x)$.
+        Dividing by $x_0 - x$, we have $\lim _{x \to x_0^+} \frac{\int _{x}^{x_0} f(t) dt}{x_0 - x} = \lim _{x \to x_0^+} \frac{\int _{x_0}^x f(t) dt}{x - x_0} \leq \lim _{x \to x_0^+} M = M$. \parspace
+        So we have $m \leq \lim _{x \to x_0} \frac{\int _{x_0}^x f(t) dt}{x - x_0} \leq M$, but since $f$ is continuous $m, M$ can be made arbitrarily close with sufficiently small $\Delta x$ so the limit exists because of the squeeze theorm.
+        Further, the value to which $m, M$ converge to is $\Delta x \to 0$ is $f(x_0)$, as desired. \parspace
+        Note that if $f$ has a jump discontinuity at $x_0$, we cannot use the squeeze theorem.
+        In fact, the left limit would be bounded above by $\sup _{y \in [x_0 - \Delta x_0, x_0]} f(y)$ and the right limit would be bounded below by $\inf _{y \in [x_0, x_0 + \Delta x_0]} f(y)$.
+        Since $f$ has a jump discontinuity at $x_0$ we know that $\sup _{y \in [x_0 - \Delta x_0, x_0]} f(y) < \inf _{y \in [x_0, x_0 + \Delta x_0]} f(y)$.
+        But then the left and right limit cannot by equal, so the limiet does not exist.
     }
 \end{exercise}
 
