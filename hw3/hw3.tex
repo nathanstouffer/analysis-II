@@ -33,10 +33,10 @@
 
 \begin{exercise}{7.2.4}{2}
     \problem{
-        State a contrapositive for of the comparison test that can be used to show divergence of a series.
+        State a contrapositive form of the comparison test that can be used to show divergence of a series.
     }
     \proof{
-
+        Contrapositive: For infinite series $\sum _{k=1}^\infty x_k$ and $\sum _{k=1}^\infty y_k$ with non-negative $x_k$ and $x_k \leq |y_k|$, we can say that if $\sum _{k=1}^\infty x_k$ diverges that $\sum _{k=1}^\infty y_k$ is divergent.
     }
 \end{exercise}
 
@@ -48,7 +48,25 @@
         What does this tell you if $\lim _{n \to \infty} |x_{n+1} / x_n|$ exists?
     }
     \proof{
-
+        The ratio test claims that if $|x_{n+1} / x_n | < r$ for all sufficiently large $n$ and some $r < 1$, then $\sum x_n$ converges absolutely while if $|x_{n+1} / x_n| \geq 1$ for all sufficiently large $n$, then $\sum x_n $ diverges. \parspace
+        First we prove the absolutely convergent result.
+        Consider some infinite series that satisfies $|x _{n+1} / x_n | < r$ for all sufficiently large $n$.
+        Then there exists a natural number $K$ such that for all $n > K$ we have $| x_{n+1} / x_n | < r$.
+        Then the infinite series $\sum x_n = \sum _{n=1}^K x_n + \sum _{n=K+1}^\infty x_n$.
+        Letting $y_n = x_{n+K}$, the convergence of $\sum x_n$ rests on $\sum _{n=K+1}^\infty x_n = \sum _{n=1}^\infty y_n$. \parspace
+        By supposition, we have (for all $n > K$) $| x_{n+1} / x_n | < r$.
+        Because of how we defined $y_n$, this means we have $|y_{n+1} / y_n| < r$ for all $n$.
+        This implies that $| y_{n+1} | < r | y_n |$, which, in turn, means that $|y_n| < r^{n-1} |y_1|$ for $n \geq 2$.
+        Then let $z_n = r^{n-1} y_1$.
+        We know $\sum _{n=1}^\infty z_n$ converges because $\sum _{n=1}^\infty z_n = \sum _{n=1}^\infty  r^{n-1} y_1 = y_1 \sum _{n=1}^\infty  r^{n-1} $ converges since $|r| < 1$.
+        Now we can use the comparison test for $\sum z_n$ and $\sum y_n$ to say that $\sum y_n$ converges absolutely, which implies the absolute convergence of $\sum x_n$. \parspace
+        We now show that if $| x_{n+1} / x_n | \geq 1$ for all sufficiently large $n$ then $\sum x_n$ diverges.
+        Suppose we have such a summation $\sum x_n$.
+        Then there exists some $K$ such that $| x_{n+1} / x_n | \geq 1$ for all $n > K$.
+        But then we have $|x_{n+1}| \geq |x_n|$ for all $n > K$.
+        This certainly cannot satisfy $\lim _{n \to \infty} x_n = 0$, a necessary condition for convergence.
+        Therefore, $\sum x_n$ diverges. \parspace
+        If we know that $\lim _{n \to \infty} |x_{n+1} / x_n|$ exists, then 
     }
 \end{exercise}
 
