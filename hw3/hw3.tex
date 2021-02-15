@@ -13,7 +13,16 @@
         For which values of $a$ and $b$ does the improper integral $\int _0^{1/2} x^a | \log x | ^b dx$ exist?
     }
     \proof{
-
+        We consider three cases for the value of $a$: $a < -1, a = -1, a > -1$.
+        Beginning with $a > -1$ then we know there exists some $\epsilon > 0$ such that $a - \epsilon > -1$.
+        Then $\int _0^{1/2} x^a | \log x | ^b dx = \int _0^{1/2} x^{a-\epsilon} x^\epsilon | \log x | ^b dx $.
+        Then $\lim _{x \to 0^+} x^\epsilon |\log x|^b = 0$ so we need only worry about the convergence of $\int _0^{1/2} x^{a-\epsilon}$.
+        But $a - \epsilon > -1$ so we know this integral to converge. \parspace
+        Now consider $a < -1$ then there exists some $\epsilon > 0$ sucht that $a + \epsilon < -1$.
+        Then $\int _0^{1/2} x^a | \log x | ^b dx = \int _0^{1/2} x^{a+\epsilon} x^{-\epsilon} | \log x | ^b dx $.
+        Then $\lim _{x \to 0^+} x^{- \epsilon} | \log x | ^b = \infty$ so we are toast in this case. \parspace
+        When $a = -1$, we have $\int _0^{1/2} x^a | \log x | ^b dx = \int _0^{1/2} \frac{| \log x | ^b}{x} dx $.
+        Taking $\log$ to be the natural logarithm, we have $\int _0^{1/2} \frac{| \ln x | ^b}{x} dx = \frac{| \ln x | ^{b+1}}{b+1} \Bigr\rvert _0^{1/2}$ (even when $b=0$) which diverges to $-\infty$ when 0 is plugged in.
     }
 \end{exercise}
 
@@ -25,7 +34,32 @@
         Can this happen if one of the series is absolutely convergent?
     }
     \proof{
-
+        For the infinite series $\sum x_k, \sum y_k$, let $x_k = (-1)^k / \sqrt{k}$ and $y_k = (-1)^{k+1} / \sqrt{k}$.
+        Note that $- \sum x_k = \sum y_k$ so we only need to show that convergence of one series.
+        Let's show $\sum x_k$.
+        If we set $A_k = 1/ \sqrt{k}$ then $\sum x_k = \sum _{k=1}^\infty (-1)^k A_k$ where $A_k$ monotonically converges to 0.
+        Then we can apply Theorem 7.2.5 to say that $\sum x_k$ is convergent.
+        So each of $\sum x_k$ and $\sum y_k$ converge, what about their pairwise product?
+        $$ \sum _{k=1}^\infty x_k y_k
+        = \sum _{k=1}^\infty ((-1)^k / \sqrt{k}) * ((-1)^{k+1} / \sqrt{k})
+        = \sum _{k=1}^\infty (-1)^{2k+1} / k
+        = \sum _{k=1}^\infty -1 / k
+        = - \sum _{k=1}^\infty 1/k$$
+        But this is the negative of the harmonic series, which we know diverges so we have given an example of the desired series. \parspace
+        Now suppose that one of the series is absolutely convergent.
+        Without loss of generality, pick $\sum x_k$.
+        Then $\sum _{k=1}^\infty |x_k|$ converges.
+        Additionally, we know $\sum y_k$ converges.
+        Since $\sum y_k$ converges, we know $\lim _{k \to \infty} y_k = 0$.
+        Then for all $1/n$ there exists and $m$ for which $|y_j| < 1/n$ for all $j \geq m$.
+        Choose $n = 1$ and let $m_1$ be the index that satisfies the Cauchy criterion.
+        Certainly the partial sum $\sum _{k=1}^{m_1-1} x_k y_k $ converges.
+        What about $\sum _{k=m_1}^\infty x_k y_k$?
+        Choose any $N > m_1$, then we have $ \left| \sum _{k=m_1}^N x_k y_k \right| \leq \sum _{k=m_1}^N | x_k y_k | = \sum _{k=m_1}^N |x_k| |y_k| $
+        by the triangle inequality.
+        But since $|y_j| < 1$ for all $j \geq m_1$ so $\sum _{k=m_1}^N |x_k| |y_k| \leq \sum _{k=m_1}^N |x_k|$.
+        Then we can the limit as $N \to \infty$ and the non-strict inequality is preserved.
+        But we already know $\sum |x_n|$ converges so $\sum x_n y_n$ converges.
     }
 \end{exercise}
 
@@ -66,7 +100,8 @@
         But then we have $|x_{n+1}| \geq |x_n|$ for all $n > K$.
         This certainly cannot satisfy $\lim _{n \to \infty} x_n = 0$, a necessary condition for convergence.
         Therefore, $\sum x_n$ diverges. \parspace
-        If we know that $\lim _{n \to \infty} |x_{n+1} / x_n|$ exists, then 
+        If we know that $\lim _{n \to \infty} |x_{n+1} / x_n|$ exists, then I'm not sure what we can say.
+        It seems like the series may converge or diverge.
     }
 \end{exercise}
 
