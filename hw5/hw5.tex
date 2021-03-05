@@ -16,15 +16,15 @@
         So we know that $f$ is analytic in some neighborhood $(x_0 - 1/n, x_0 + 1/n)$.
         Let $y$ be any fixed point in $(x_0 -1/n, x_0 + 1/n)$.
         Since $f(x)$ is analytic at $y$, there exists a power series expansion $f(x) = \sum _{n=0}^\infty a_n (x - y)^n$ about $y$.
-        By the uniqueness of power series, 
-        $ \sum _{n=0}^\infty a_n (x - y)^n = 
+        By the uniqueness of power series,
+        $ \sum _{n=0}^\infty a_n (x - y)^n =
         \sum_{n=0}^\infty b_n (x - x_0)^n
         = \sum _{n=0}^\infty \frac{f^{(n)} (x_0)}{n!} (x - x_0)^n$.
         Then $b_n = \frac{f (x_0)}{0!} = \frac{0}{1} = 0$ and
         $$ f(x) = \sum _{n=0}^\infty \frac{f^{(n)} (x_0)}{n!} (x-x_0)^n
         = \sum _{n=1}^\infty \frac{f^{(n)} (x_0)}{n!} (x-x_0)^n$$
-        We can divide both sides by $x - x_0$, leaving 
-        $$ \frac{f(x)}{x-x_0} = \frac{1}{x-x_0} \sum _{n=1}^\infty \frac{f^{(n)} (x_0)}{n!} (x - x_0)^n 
+        We can divide both sides by $x - x_0$, leaving
+        $$ \frac{f(x)}{x-x_0} = \frac{1}{x-x_0} \sum _{n=1}^\infty \frac{f^{(n)} (x_0)}{n!} (x - x_0)^n
         = \sum_{n=1}^\infty \frac{f^{(n)} (x_0)}{n!} (x - x_0)^n $$
         Thus $f(x)/(x-x_0)$ has a power series expansion about any point $y$ in the neighborhood so $f(x)$ is analytic.
     }
@@ -40,12 +40,12 @@
         Fix $c \in (a,b)$.
         Then since $f$ is analytic on $(a,b)$, we have $f(x) = \sum _{n=0}^\infty a_n (x - c)^n$ where $a_n = \frac{f^{(n)} (c)}{n!}$.
         Then since $F(x) = \int _c^x f(t) dt$,
-        $$ F(x) 
+        $$ F(x)
         = \int _c^x \sum _{n=0}^\infty \frac{f^{(n)} (c)}{n!} (t - c)^n dt
         = \left. \left( \sum _{n=0}^\infty \frac{f^{(n)} (c)}{(n+1)!} (t-c)^{n+1} \right) \right| _c^x $$
         Then evaluating,
         $$ F(x) = \sum _{n=0}^\infty \frac{f^{(n)} (x_0)}{(n+1)!} (x - c)^{n+1} - \sum _{n=0}^\infty \frac{f^{(n)} (c)}{(n+1)!} (c - c)^{n+1}$$
-        But the second term is 0 so we are left with $F(x) \sum _{n=0}^\infty \frac{f^{(n)} (c)}{(n+1)!} (x - c)^{n+1}$.
+        But the second term is 0 so we are left with $F(x) = \sum _{n=0}^\infty \frac{f^{(n)} (c)}{(n+1)!} (x - c)^{n+1}$.
         Since $c$ was arbitrary in $(a,b)$, $F(x)$ has a power series expansion about any point in $(a,b)$, thus $F(x)$ is analytic.
     }
 \end{exercise}
@@ -59,10 +59,10 @@
     \proof{
         We wish to find the power series expansion for $x^2 / (1-x^2)$ about $x=0$.
         Let $u = x^2$.
-        Then 
+        Then
         $$ \frac{x^2}{1-x^2} = \frac{u}{1-u} = u \frac{1}{1-u}$$
         Now we know the power series for $1/(1-u) = \sum _{n=0}^\infty u^n$
-        so 
+        so
         $$ u \frac{1}{1-u} = u \sum _{n=0}^\infty u^n = \sum _{n=0}^\infty u^{n+1} $$
         Since, we have $u = x^2$, $\sum _{n=0}^\infty u^{n+1} = \sum _{n=0}^\infty (x^2)^{n+1} = \sum _{n=0}^\infty x^{2n+2}$
         so we have the power expansion for $f(x) = x^2 / (1 - x^2)$ about $x = 0$.
@@ -83,9 +83,9 @@
         \\ \indent a. Here $1/R = \lim \sup _{n \to \infty} (n^4/ n!)^{1/n} = \lim _{n \to \infty} (n^4)^{1/n} \lim _{n \to \infty} (1/n!)^{1/n}$.
         Since $n^4$ is a polynomial in $n$ we know $\lim _{n \to \infty} (n^4)^{1/n} = 1$ and it was proven in the textbook that $\lim _{n \to \infty} (1/n!)^{1/n} = 0$.
         Since the RHS is 0, $R = + \infty$. \\\\
-        \indent b. Again $1/R = \lim \sup _{n \to \infty} (\sqrt{n})^{1/n} = (\lim \sup _{n \to \infty} n^{1/n} )^{1/2} = 1^{1/2} = 1$. 
+        \indent b. Again $1/R = \lim \sup _{n \to \infty} (\sqrt{n})^{1/n} = (\lim \sup _{n \to \infty} n^{1/n} )^{1/2} = 1^{1/2} = 1$.
         So $R = 1$. \\\\
-        \indent c. As always, $1/R = \lim \sup _{n \to \infty} (n^2 2^2)^{1/n} = \lim _{n \to \infty} (n^2)^{1/n} \lim _{n \to \infty} (2^n)^{1/n} = 1 \lim _{n \to \infty} 2 = 2$ which means $R = 1/2$.
+        \indent c. As always, $1/R = \lim \sup _{n \to \infty} (n^2 2^n)^{1/n} = \lim _{n \to \infty} (n^2)^{1/n} \lim _{n \to \infty} (2^n)^{1/n} = 1 \lim _{n \to \infty} 2 = 2$ which means $R = 1/2$.
     }
 \end{exercise}
 
