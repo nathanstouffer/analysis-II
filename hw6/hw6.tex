@@ -13,7 +13,18 @@
         If $f$ is $C^1$ on $[a,b]$ prove that there exists a cubic polynomial $P$ such that $f-P$ and its first derivative vanish at the endpoints of the interval.
     }
     \proof{
-
+        Note that we are able to use the fact that there exists a polynomial of degree $2n-1$ that satisfies $f(x_k) = a_k$ and $f'(x_k) = b_k$ for $k=1,\ldots,n$.
+        Let $n=2$ and take $x_1 = a$ and $x_2 = b$.
+        Let $a_1 = f(a)$, $b_1 = f'(a)$ and $a_2 = f(b), b_2 = f'(b)$.
+        We apply our fact and say that there is some polynomial $P$ of degree $2n-1=3$ that satisfies $P(a) = a_1 = f(a)$, $P'(a) = b_1 = f'(a)$, $P(b) = a_2 = f(b)$, and $P'(b) = b_2 = f'(b)$. \parspace
+        Then we have the following four equations:
+        \begin{align*}
+            (f-P)(a)  &= f(a) - P(a) = f(a) - f(a) = 0 \\
+            (f-P)'(a) &= f'(a) - P'(a) = f'(a) - f'(a) = 0 \\
+            (f-P)(b)  &= f(b) - P(b) = f(b) - f(b) = 0 \\
+            (f-P)'(b) &= f'(b) - P'(b) = f'(b) - f'(b) = 0
+        \end{align*}
+        Thus we have the desired equalities for a cubic polynomial $P$.
     }
 \end{exercise}
 
@@ -24,7 +35,8 @@
         If $f(c) = 0$ for some point $c$ in $(a,b)$, prove that the polynomials approximating $f$ on $[a,b]$ may be taken to vanish at $c$.
     }
     \proof{
-
+        By the WAT, we gain a sequence of polynomials $f_n$ that converges to $f$ uniformly.
+        Since uniform convergence implies pointwise convergence, we know $f_n (c) \to 0$ as $n \to \infty$, so the polynomials $f_n$ vanish at $c$.
     }
 \end{exercise}
 
@@ -34,10 +46,42 @@
     \problem{
         \\ \indent a. For $c_m = \int _{-1}^1 (1 - x^2)^m dx$, obtain the identity $c_m = c_{m-1} - (1/2m) c_m$ by integration by parts. \\
         \indent b. Show that
-        $$ c_m = 2 \frac{2*4*6* \cdots * (2m)}{3*5*7* \cdots * (2m+1)} = \frac{2(2^m m!)^2}{2m+1}! $$
+        $$ c_m = 2 \frac{2*4*6* \cdots * (2m)}{3*5*7* \cdots * (2m+1)} = \frac{2(2^m m!)^2}{(2m+1)!} $$
     }
     \proof{
-
+        \\ \indent a. We wish to compute $\int _{-1}^1 (1-x^2)^m dx$.
+        Let $u = (1-x^2)^m$ and $dv = dx$.
+        This implies that $v = x$ and $du = m*(1-x^2)^{m-1}*(-2x) = -2mx(1-x^2)^{m-1}$.
+        Then with integration by parts, we have
+        \begin{align*}
+            c_m &= \int _{-1}^1 (1-x^2)^m dx \\
+            &= \left. (1-x^2)^m * x \right| _{-1}^1 - \int _{-1}^1 -2mx^2 (1-x^2)^{m-1} dx \\
+            &= 0 + 2m \int _{-1}^1 (1 - 1 + x^2) (1-x^2)^{m-1} dx \\
+            &= 2m \left[ \int _{-1}^1 (1-x^2)^{m-1} dx + \int _{-1}^1 (-1 + x^2) (1-x^2)^{m-1} dx \right] \\
+            &= 2m \left[ c_{m-1} - \int _{-1}^1 (1-x^2)^m dx \right] \\
+            c_m &= 2m \left[ c_{m-1} - c_m \right] \\
+            (1/2m) c_m &= c_{m-1} - c_m \\
+            c_m &= c_{m-1} - (1/2m) c_m
+        \end{align*}
+        So have shown $c_m = c_{m-1} - (1/2m) c_m$.
+        Note that this can be rearranged to say that $c_m = \frac{2m *c_{m-1}}{2m+1}$, which will be useful in part a. \parspace
+        \indent b. We now show $c_m = \frac{2(2^m m!)^2}{(2m+1)!} $ by induction.
+        Consider the base case $m=1$: $c_1 = \int _{-1}^1 (1-x^2)^1 dx = \left. \left( x - (1/3)x^3 \right) \right| _{-1}^1 = (1-1/3) - (-1+1/3) = 4/3$.
+        Also $\frac{2(2^1*1!)^2}{(2*1+1)!} = 8/3! = 8/6 = 4/3$ so the base case holds. \parspace
+        Now suppose for some natural number $m$ we have $c_m = \frac{2(2^m m!)^2}{(2m+1)!}$.
+        What is $c_{m+1}$?
+        Recall the rearranged formula from part a, then $c_{m+1} = \frac{2(m+1)c_m}{2(m+1)+1}$.
+        Then we use the induction hypothesis and perfrom some algebra:
+        \begin{align*}
+            c_{m+1} &= \dfrac{2(m+1)}{2(m+1)+1} c_m \\
+            &= \dfrac{2(m+1)}{2(m+1)+1} \dfrac{2(2^m m!)^2}{(2m+1)!} \\
+            &= \dfrac{2(m+1)}{2(m+1)} \dfrac{2(m+1)}{2(m+1)+1} \dfrac{2(2^m m!)^2}{(2m+1)!} \\
+            &= 2 \dfrac{2^2 (m+1)^2 (2^m m!)^2}{(2(m+1)+1)(2m+2)(2m+1)!} \\
+            &= \dfrac{2 (2*2^m * (m+1)m!)^2}{(2(m+1)+1)(2m+2)!} \\
+            &= \dfrac{2 (2^{m+1} (m+1)!)^2}{(2(m+1)+1)(2(m+1))!} \\
+            c_{m+1} &= \dfrac{2 (2^{m+1} (m+1)!)^2}{(2(m+1)+1)!}
+        \end{align*}
+        Thus the induction step holds and $c_m = \frac{2(2^m m!)^2}{(2m+1)!}$
     }
 \end{exercise}
 
