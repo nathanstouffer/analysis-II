@@ -13,7 +13,8 @@
         If $|f_n (x) - f_n (y)| \leq M |x-y|^\alpha$ for some fixed $M$ and $\alpha > 0$ and all $x,y$ in a compact interval, show that $\{ f_n \}$ is uniformly equicontinuous.
     }
     \proof{
-
+        A sequence is uniformly equicontinuous if for all $1/m$ there exists a $1/k$ such that $|x-y| < 1/k$ implies $|f_n (x) - f_n (y)| < 1/m$ for every $f_n$ in the sequence.
+        If we are given $1/m$, choose $1/k = (1/Mm)^{1/\alpha}$, then we have $|f_n (x) - f_n (y)| \leq M |x-y|^\alpha  \leq M 1/k^\alpha = M ((1/Mm)^{1/\alpha})^\alpha = M/Mm = 1/m$ for $|x-y| < 1/k$ as desired.
     }
 \end{exercise}
 
@@ -24,7 +25,8 @@
         Give an example of a sequence that is uniformly equicontinuous but not uniformly bounded.
     }
     \proof{
-
+        Consider the sequence $\{ f_n (x) \}$ where we take $f_n (x) \equiv n$.
+        Then $|f_n (x) - f_n (y)| = |n - n| = 0$ for all $x,y$ yet there is no bound on the sequence.
     }
 \end{exercise}
 
@@ -35,7 +37,17 @@
         Prove that the family of all polynomials of degree $\leq N$ with coefficients in $[-1,1]$ is uniformly bounded and uniformly equicontinuous on any compact interval.
     }
     \proof{
-
+        Let $p(x)$ be a such a polynomial on a compact interval $[a,b]$.
+        That is, $p(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_i x^i$ for $x \in [a,b]$ a compact interval, $c_i \in [-1, 1]$, and $ 0 \leq i \leq N $. \parspace
+        First we will bound all such polynomials.
+        Choose $m = \max (|a|, |b|)$ then any $c_j x^j \leq |c_j x^j| = |c_j| |x^j| \leq 1 m^j = m^j$ and take $M = \sum _{i=0}^N m^i$.
+        Then, term for term, we have $p(x) \leq M$ for any of the polynomials in the family.
+        Thus, the family is uniformly bounded. \parspace
+        Now we show that the family is uniformly equicontinuous.
+        For any such $p(x)$, consider $p' (x) = c_1 + 2c^2 x + 3 c_3 x^2 + \cdots + N c_N x^{N-1}$.
+        Then $p'(x) \leq M' = \sum _{i=0}^{N-1} N * m^i$ since $N*m^i$ is larger term for term.
+        Thus by the MVT we have the following for some $z \in (x,y)$: $|p(x) - p(y)| \leq |p'(z)| |x-y| \leq M' |x-y|$.
+        Then for a given $1/m$ we can choose $1/n = 1/(Mm)$ to satisfy equicontinuity.
     }
 \end{exercise}
 
@@ -46,7 +58,21 @@
         Give an example of a uniformly bounded and uniformly equicontinuous sequence of functions on the whole line that does not have any uniformly convergent subsequences.
     }
     \proof{
-
+        Consider the function
+        \[ f_n (x) =
+        \begin{cases}
+            0           & x \leq n-1 \\
+            x - (n-1)   & n-1 < x \leq n \\
+            1           & x > n
+        \end{cases}
+        \]
+        Any $f_n$ is bounded by taking $M = 2$ so the sequence is uniformly bounded.
+        Also the sequence is uniformly continuous by taking $1/n = 1/2m$ for a given $1/m$ (also the derivative is bounded above by 1).
+        Now we show that the sequence has no uniformly converging subsequences.
+        To have a converging subsequence, there must be a subsequence that satisfies the Cauchy criterion.
+        We show that no pair of distinct elements even satisfies the Cauchy criterion, so there is no chance of a subsequence existing since every element of the sequence is distinct.
+        Pick any $k > j$ and consider $|f_k (j) - f_j (j)| = |0 - 1| = 1$.
+        Thus there is no uniformly converging subsequence of $f_n$.
     }
 \end{exercise}
 
