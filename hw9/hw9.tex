@@ -34,7 +34,33 @@
         For any $x = (x_1, \ldots , x_n) \in \R ^n$ and any multi-index $\alpha = (\alpha _1, \ldots , \alpha _n)$, prove that $|x^\alpha| \leq |x|^{|\alpha|}$ where $x^\alpha = x_1^{\alpha _1} \cdots x_n^{\alpha _n}$, $|x| = \sqrt{x_1^2 + \cdots + x_n^2}$, and $|\alpha| = \alpha _1 + \cdots + \alpha _n$
     }
     \proof{
-
+        With the defined operations, we have (crucially) that $x_i \leq \sqrt{x_i^2} \leq \sqrt{x_1^2 + \cdots + x_i^2 + \cdots + x_n^2} = |x|$.
+        This implies that, for any $x_i$, we have $|x _i ^{\alpha _i}| \leq | |x| ^{\alpha _i} | = |x| ^{\alpha _i}$.
+        This allows us to deduce the following:
+        $$
+        |x ^\alpha |
+        = | x_1 ^{\alpha _1} \cdots x_n ^{\alpha _n} |
+        = |x_1 ^{\alpha _1}| \cdots |x_n ^{\alpha _n}|
+        \leq |x| ^{\alpha _1} \cdots |x|^{\alpha _n}
+        = |x| ^{\alpha _1 + \cdots + \alpha _n}
+        = |x| ^{|\alpha|}
+        $$
+        which was the goal!
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
